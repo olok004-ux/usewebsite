@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#1a1a1a"/>
+  <rect x="0" y="0" width="96" height="96" fill="#c8102e"/>
+  <rect x="104" y="104" width="96" height="96" fill="#c8102e"/>
+  <rect x="0" y="104" width="96" height="96" fill="#555555"/>
+  <rect x="104" y="0" width="96" height="96" fill="#555555"/>
+  <rect x="16" y="88" width="168" height="24" fill="#1a1a1a"/>
+  <text x="100" y="105" font-family="Georgia,serif" font-size="10" font-weight="400" fill="white" text-anchor="middle" letter-spacing="1" font-style="italic">a Twosome Place</text>
+</svg>

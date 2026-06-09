@@ -11703,7 +11703,7 @@ body:has(#mps-connect.mps-open) #mpsBackBar {
   flex-direction: column;
   gap: 0;
   padding: var(--spacing-16);
-  width: 100%;
+  width: 362px;
 }
 .mf-user-copy {
   display: flex;
@@ -20318,4 +20318,49 @@ body:has(#p-connect-svc-select[style*="display:block"]) .main-content {
   width: 100% !important;
   text-align: right !important;
   margin: 0 !important;
+}
+
+/* ==================== NOTI WIZARD final targeted layout fixes ==================== */
+#notiWizard #wiz-step2 .wiz-brand-scroll {
+  gap: var(--spacing-12);
+  padding-right: var(--spacing-20);
+  scroll-padding-right: var(--spacing-20);
+}
+
+#notiWizard #wiz-step2 .wiz-brand-scroll .wiz-brand {
+  width: calc(var(--spacing-80) + var(--spacing-16));
+  height: 128px;
+  padding: var(--spacing-10);
+}
+
+#notiWizard #wiz-step2 .wiz-brand-scroll .wiz-brand-card,
+#notiWizard #wiz-step2 .wiz-brand-scroll .wiz-brand-logo {
+  width: var(--spacing-80);
+  height: var(--spacing-80);
+}
+
+#notiWizard #wiz-step2 .wiz-brand-scroll .wiz-brand-name {
+  width: calc(var(--spacing-80) + var(--spacing-16));
+  height: auto;
+  font-size: var(--font-size-body);
+  line-height: 1.2;
+  word-break: keep-all;
+}
+
+#notiWizard #wiz-step2 .wiz-brand-scroll .wiz-brand-logo b,
+#notiWizard #wiz-step2 .wiz-brand-scroll .wiz-brand-logo span {
+  font-size: var(--font-size-body) !important;
+  line-height: 1;
+}
+
+#notiWizard #wiz-step3 .wiz-fixed-head {
+  flex: none;
+  background: var(--surface);
+  position: relative;
+  z-index: 2;
+  padding: 0;
+}
+
+#notiWizard #wiz-step3 .wiz-slider-wrap {
+  margin-top: var(--spacing-32);
 }

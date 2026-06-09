@@ -4842,7 +4842,16 @@ const ACT = {
 
     // 브랜드 아이콘
     const iconEl = document.getElementById('detBrandIcon');
-    if (iconEl) { iconEl.textContent = icon; iconEl.style.background = bg; iconEl.style.color = 'white'; }
+    if (iconEl) {
+      const logoSrc = (typeof BRAND_LOGO !== 'undefined') && BRAND_LOGO[cpn.brand];
+      if (logoSrc) {
+        iconEl.innerHTML = `<img src="${logoSrc}" alt="${cpn.brand}" style="width:100%;height:100%;object-fit:contain;">`;
+        iconEl.style.background = 'var(--color-surface)';
+        iconEl.style.color = '';
+      } else {
+        iconEl.textContent = icon; iconEl.style.background = bg; iconEl.style.color = 'white';
+      }
+    }
 
     const setTxt = (i,v) => { const el=document.getElementById(i); if(el) el.textContent=v; };
     setTxt('detBrandName', cpn.brand);
@@ -4883,7 +4892,7 @@ const ACT = {
     if (nearbyList) {
       nearbyList.innerHTML = stores.map(store => `
         <div class="det-store-card">
-          <div class="det-store-img" style="background:${bg};color:var(--color-on-primary);display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-bold);font-size:var(--font-size-body)">${icon}</div>
+          <div class="det-store-img" style="background:${logoSrc?'var(--color-surface)':bg};color:var(--color-on-primary);display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-bold);font-size:var(--font-size-body);overflow:hidden">${logoSrc?`<img src="${logoSrc}" alt="${cpn.brand}" style="width:100%;height:100%;object-fit:contain;">`:icon}</div>
           <div class="det-store-info">
             <div class="det-store-name">${store.name}</div>
             <div class="det-store-addr">${store.addr}</div>
@@ -5578,8 +5587,9 @@ function renderCouponDetailRecommendations(cpn) {
         </div>`;
       }
       const item = rec.item;
+      const _recLogoSrc = (typeof BRAND_LOGO !== 'undefined') && BRAND_LOGO[item.brand];
       return `<div class="det-rec-item" onclick="ACT['go-detail']&&ACT['go-detail']({target:{dataset:{id:'${item.id}'}}})" style="cursor:pointer">
-        <div class="det-rec-img" style="display:flex;align-items:center;justify-content:center;background:${cpnBgColor(item.brand)};color:var(--color-surface);font-weight:var(--font-weight-bold)">${useHtmlText(cpnInitial(item.brand))}</div>
+        <div class="det-rec-img" style="display:flex;align-items:center;justify-content:center;background:${_recLogoSrc?'var(--color-surface)':cpnBgColor(item.brand)};color:var(--color-surface);font-weight:var(--font-weight-bold);overflow:hidden">${_recLogoSrc?`<img src="${_recLogoSrc}" alt="${item.brand}" style="width:80%;height:80%;object-fit:contain;">`:useHtmlText(cpnInitial(item.brand))}</div>
         <div class="det-rec-text">
           <div class="det-rec-title">${useHtmlText(item.brand)} ${useHtmlText(useCouponBenefitText(item))}</div>
           <div class="det-rec-sub">${useHtmlText(item.name)} · ${useHtmlText(cpnDday(item.expiry))}</div>
@@ -5622,7 +5632,7 @@ function renderPointDetailRecommendations(pt) {
       if (rec.type === 'coupon') {
         const cpn = rec.item;
         return `<div class="pdet-rec-item" onclick="ACT['go-detail']&&ACT['go-detail']({target:{dataset:{id:'${cpn.id}'}}})" style="cursor:pointer">
-          <div class="pdet-rec-logo-circle" style="background:${cpnBgColor(cpn.brand)};color:var(--color-surface);font-weight:var(--font-weight-bold)">${useHtmlText(cpnInitial(cpn.brand))}</div>
+          <div class="pdet-rec-logo-circle" style="background:${(typeof BRAND_LOGO!=='undefined'&&BRAND_LOGO[cpn.brand])?'var(--color-surface)':cpnBgColor(cpn.brand)};color:var(--color-surface);font-weight:var(--font-weight-bold);overflow:hidden">${(typeof BRAND_LOGO!=='undefined'&&BRAND_LOGO[cpn.brand])?`<img src="${BRAND_LOGO[cpn.brand]}" alt="${cpn.brand}" style="width:100%;height:100%;object-fit:contain;">`:useHtmlText(cpnInitial(cpn.brand))}</div>
           <div class="pdet-rec-info">
             <p class="pdet-rec-title">${useHtmlText(cpn.brand)} ${useHtmlText(useCouponBenefitText(cpn))}</p>
             <p class="pdet-rec-sub">${useHtmlText(cpn.name)} · ${useHtmlText(cpnDday(cpn.expiry))}</p>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="white"/>
+  <!-- O logo mark: outer ring -->
+  <circle cx="100" cy="82" r="36" fill="none" stroke="#00A862" stroke-width="8"/>
+  <!-- O logo mark: inner dot -->
+  <circle cx="100" cy="82" r="12" fill="#00A862"/>
+  <!-- Text -->
+  <text x="100" y="148" font-family="Arial,sans-serif" font-size="20" font-weight="800" fill="#00A862" text-anchor="middle" letter-spacing="0.5">olive young</text>
+</svg>
